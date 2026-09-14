@@ -1,4 +1,5 @@
-# Static site — no build step, no dependencies. Netlify serves the repo root as-is.
+# Static site — no build step, no dependencies.
+# Only site/ is deployed; the Claude Design handoff bundle stays out of the build.
 [build]
-  publish = "."
+  publish = "site"
   command = ""
