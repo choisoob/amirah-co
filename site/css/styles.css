@@ -26,6 +26,8 @@
 
   --ease: cubic-bezier(.22, .7, .2, 1);
   --wrap: 1360px;
+
+  --sparkle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 0C54 38 62 46 100 50C62 54 54 62 50 100C46 62 38 54 0 50C38 46 46 38 50 0Z' fill='%23fff'/%3E%3C/svg%3E");
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -243,6 +245,11 @@ a:hover { color: var(--gold-lt); }
 .icon-btn--sound[aria-pressed="true"] .sound-on { display: block; }
 .icon-btn--sound[aria-pressed="true"] .sound-off { display: none; }
 .icon-btn--sound[aria-pressed="true"] { color: var(--gold); }
+.icon-btn--sound.is-hint { color: var(--gold); animation: soundHint 3.4s ease-in-out infinite; }
+@keyframes soundHint {
+  0%, 100% { opacity: .55; }
+  50% { opacity: 1; filter: drop-shadow(0 0 7px rgba(217, 178, 106, .7)); }
+}
 
 .burger { display: none; background: none; border: 0; cursor: pointer; padding: 10px; flex-direction: column; gap: 5px; }
 .burger span { display: block; width: 22px; height: 1.5px; background: var(--ink-warm); transition: transform .4s var(--ease), opacity .3s; }
@@ -396,6 +403,74 @@ a:hover { color: var(--gold-lt); }
   88% { opacity: .5; }
   100% { transform: translate3d(28px, -560px, 0); opacity: 0; }
 }
+
+/* ───────────────────────── ambient scenery ─────────────────────────────
+   Every layer sits below the content (text is z-index 3, product art z-index 2)
+   and never takes pointer events. Sections out of view keep their animations
+   paused, so only what you can actually see costs anything.                */
+
+.amb {
+  position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 1;
+}
+.amb:not(.is-active) span { animation-play-state: paused; }
+.amb span { position: absolute; will-change: transform, opacity; }
+
+/* fog */
+.amb-mist { z-index: 0; }
+.amb-mist span {
+  border-radius: 50%; filter: blur(30px); opacity: .85;
+  background: radial-gradient(circle, var(--c) 0%, transparent 68%);
+  animation: mistFloat var(--dur, 44s) ease-in-out var(--delay, 0s) infinite alternate;
+}
+@keyframes mistFloat {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(var(--shift, 8%), -4%, 0) scale(1.18); }
+}
+
+/* stars */
+.amb-stars span {
+  border-radius: 50%; opacity: 0;
+  animation: breathePoint var(--dur, 5s) ease-in-out var(--delay, 0s) infinite;
+}
+@keyframes breathePoint {
+  0%, 100% { opacity: calc(var(--peak, .7) * .18); transform: scale(.85); }
+  50% { opacity: var(--peak, .7); transform: scale(1); box-shadow: 0 0 7px currentColor; }
+}
+
+/* sparkles */
+.amb-spark span {
+  width: var(--s, 11px); height: var(--s, 11px); background: var(--c, #f0dcae); opacity: 0;
+  -webkit-mask: var(--sparkle) center / contain no-repeat;
+  mask: var(--sparkle) center / contain no-repeat;
+  animation: twinkle var(--dur, 7s) ease-in-out var(--delay, 0s) infinite;
+}
+@keyframes twinkle {
+  0%, 70%, 100% { opacity: 0; transform: scale(.25) rotate(0deg); }
+  35% { opacity: var(--peak, .85); transform: scale(1) rotate(42deg); }
+  50% { opacity: calc(var(--peak, .85) * .45); transform: scale(.7) rotate(66deg); }
+}
+
+/* drifting glyphs */
+.amb-symbols span {
+  color: var(--gold); opacity: 0; line-height: 1;
+  animation: glyphRise var(--dur, 34s) linear var(--delay, 0s) infinite;
+}
+@keyframes glyphRise {
+  0% { opacity: 0; transform: translate3d(0, 0, 0) rotate(0deg); }
+  15% { opacity: var(--peak, .22); }
+  85% { opacity: calc(var(--peak, .22) * .7); }
+  100% { opacity: 0; transform: translate3d(26px, -420px, 0) rotate(var(--spin, 30deg)); }
+}
+
+/* a slow glow behind the larger product plates */
+.card__glow {
+  position: absolute; left: 50%; top: 48%; translate: -50% -50%; z-index: 0;
+  width: 78%; aspect-ratio: 1; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(217, 178, 106, .22), rgba(143, 180, 232, .08) 45%, transparent 70%);
+  animation: breathe 9s ease-in-out infinite;
+}
+.card__plate img { position: relative; z-index: 2; }
+.card__plate .amb { z-index: 1; }
 
 /* ─────────────────── chapter 01 — the ordinary world ───────────────────── */
 
@@ -986,7 +1061,7 @@ a:hover { color: var(--gold-lt); }
     animation-iteration-count: 1 !important;
     transition-duration: .001ms !important;
   }
-  .dust, .rain, .cursor-dot, .cursor-trail, .hero__spark, .books, .lanterns { display: none; }
+  .dust, .amb, .card__glow, .rain, .cursor-dot, .cursor-trail, .hero__spark, .books, .lanterns { display: none; }
   [data-reveal], .card { opacity: 1; transform: none; }
   .hero__eyebrow, .hero__title, .hero__sub, .hero__cta, .hero__scroll { opacity: 1; transform: none; }
   .hero__sigil { --sigil-op: .55; --sigil-scale: 1; --sigil-blur: 0px; }

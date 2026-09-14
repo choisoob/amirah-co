@@ -299,7 +299,7 @@
     if (rm.matches) return;
     const n = small.matches ? Math.round(count * 0.4) : count;
     const box = document.createElement('div');
-    box.className = 'dust';
+    box.className = 'dust amb';
     for (let i = 0; i < n; i++) {
       const s = document.createElement('span');
       const size = (1 + Math.random() * 2.4).toFixed(1);
@@ -316,12 +316,121 @@
     return box;
   }
 
-  const dustHosts = [
-    ['.hero', 34], ['.chapter--room', 16], ['.chapter--letter', 22],
-    ['.chapter--forest', 24], ['.chapter--archive', 26], ['.chapter--dark', 18],
-    ['.chapter--ruins', 30], ['.finale', 20], ['.detail__dust', 14]
+  /* ───────────────── ambient scenery: mist, stars, sparks ──────────────── */
+
+  const GLYPHS = ['✦', '✧', '⟡', '◈', '✵'];
+  const rand = (a, b) => a + Math.random() * (b - a);
+
+  function scale(n) { return small.matches ? Math.max(2, Math.round(n * 0.45)) : n; }
+
+  function layerBox(host, cls) {
+    const box = document.createElement('div');
+    box.className = 'amb ' + cls;
+    host.appendChild(box);
+    return box;
+  }
+
+  /* soft drifting fog — sits far behind everything, heavily blurred */
+  function makeMist(host, count, tint) {
+    const box = layerBox(host, 'amb-mist');
+    for (let i = 0; i < scale(count); i++) {
+      const s = document.createElement('span');
+      const w = rand(280, 620);
+      s.style.cssText =
+        `left:${rand(-14, 82).toFixed(1)}%;top:${rand(6, 74).toFixed(1)}%;` +
+        `width:${w.toFixed(0)}px;height:${(w * rand(0.4, 0.7)).toFixed(0)}px;` +
+        `--c:${tint};--dur:${rand(34, 62).toFixed(1)}s;--delay:${(-rand(0, 30)).toFixed(1)}s;` +
+        `--shift:${rand(4, 13).toFixed(1)}%`;
+      box.appendChild(s);
+    }
+  }
+
+  /* pinpoint stars that breathe rather than blink */
+  function makeStars(host, count) {
+    const box = layerBox(host, 'amb-stars');
+    for (let i = 0; i < scale(count); i++) {
+      const s = document.createElement('span');
+      const size = rand(1, 2.6);
+      s.style.cssText =
+        `left:${rand(1, 99).toFixed(1)}%;top:${rand(2, 72).toFixed(1)}%;` +
+        `width:${size.toFixed(1)}px;height:${size.toFixed(1)}px;` +
+        `background:${i % 5 === 0 ? '#8fb4e8' : '#f0dcae'};` +
+        `--dur:${rand(3.4, 8).toFixed(1)}s;--delay:${(-rand(0, 8)).toFixed(1)}s;` +
+        `--peak:${rand(0.35, 0.9).toFixed(2)}`;
+      box.appendChild(s);
+    }
+  }
+
+  /* four-point sparkles that wink in and out */
+  function makeSparkles(host, count, spread) {
+    const box = layerBox(host, 'amb-spark');
+    for (let i = 0; i < scale(count); i++) {
+      const s = document.createElement('span');
+      s.style.cssText =
+        `left:${rand(2, 98).toFixed(1)}%;top:${rand(spread ? 2 : 8, spread ? 94 : 78).toFixed(1)}%;` +
+        `--s:${rand(7, 16).toFixed(1)}px;` +
+        `--c:${i % 3 === 0 ? '#bcd2f2' : i % 3 === 1 ? '#f0dcae' : '#e3c9f0'};` +
+        `--dur:${rand(4.5, 11).toFixed(1)}s;--delay:${(-rand(0, 11)).toFixed(1)}s;` +
+        `--peak:${rand(0.5, 0.95).toFixed(2)}`;
+      box.appendChild(s);
+    }
+  }
+
+  /* faint glyphs drifting upward, well under the text layer */
+  function makeSymbols(host, count) {
+    const box = layerBox(host, 'amb-symbols');
+    for (let i = 0; i < scale(count); i++) {
+      const s = document.createElement('span');
+      s.textContent = GLYPHS[i % GLYPHS.length];
+      s.style.cssText =
+        `left:${rand(3, 94).toFixed(1)}%;bottom:${rand(-12, 40).toFixed(1)}%;` +
+        `font-size:${rand(13, 30).toFixed(0)}px;` +
+        `--dur:${rand(26, 46).toFixed(1)}s;--delay:${(-rand(0, 40)).toFixed(1)}s;` +
+        `--peak:${rand(0.12, 0.3).toFixed(2)};--spin:${rand(-40, 40).toFixed(0)}deg`;
+      box.appendChild(s);
+    }
+  }
+
+  const SCENERY = [
+    ['.hero', { dust: 28, stars: 30, spark: 10 }],
+    ['.chapter--room', { dust: 16, mist: [3, 'rgba(190,150,90,.16)'] }],
+    ['.chapter--letter', { dust: 14, spark: 14, symbols: 5 }],
+    ['.chapter--forest', { dust: 16, stars: 26, mist: [3, 'rgba(130,175,200,.13)'] }],
+    ['.chapter--archive', { dust: 16, spark: 13, symbols: 6 }],
+    ['.chapter--dark', { dust: 12, mist: [4, 'rgba(170,70,105,.15)'] }],
+    ['.chapter--ruins', { dust: 20, stars: 24, spark: 8 }],
+    ['.finale', { dust: 16, stars: 20, spark: 9 }],
+    ['.detail__dust', { dust: 12, spark: 7 }]
   ];
-  dustHosts.forEach(([sel, n]) => { const el = $(sel); if (el) makeDust(el, n); });
+
+  SCENERY.forEach(([sel, spec]) => {
+    const host = $(sel);
+    if (!host || rm.matches) return;
+    if (spec.mist) makeMist(host, spec.mist[0], spec.mist[1]);
+    if (spec.stars) makeStars(host, spec.stars);
+    if (spec.dust) makeDust(host, spec.dust);
+    if (spec.spark) makeSparkles(host, spec.spark, sel === '.detail__dust');
+    if (spec.symbols) makeSymbols(host, spec.symbols);
+  });
+
+  /* offscreen scenery keeps its animations paused so idle sections cost nothing */
+  const ambIO = new IntersectionObserver((entries) => {
+    entries.forEach((e) => e.target.classList.toggle('is-active', e.isIntersecting));
+  }, { rootMargin: '15% 0px 15% 0px' });
+  $$('.amb').forEach((el) => ambIO.observe(el));
+
+  /* the biggest cards get a breathing glow and a few sparks of their own */
+  function decorateCards() {
+    $$('.card--lg .card__plate, .card--md .card__plate').forEach((plate) => {
+      if (plate.querySelector('.amb')) return;
+      const glow = document.createElement('span');
+      glow.className = 'card__glow';
+      plate.insertBefore(glow, plate.firstChild);
+      if (rm.matches || small.matches) return;
+      makeSparkles(plate, 5, true);
+      plate.querySelectorAll('.amb').forEach((el) => ambIO.observe(el));
+    });
+  }
 
   /* ───────────────────────── reveal on scroll ────────────────────────── */
 
@@ -511,6 +620,7 @@
     $('#grid').innerHTML = list.map(cardHTML).join('');
     $('#empty').hidden = list.length > 0;
     $('#resultCount').textContent = `${list.length} artifact${list.length === 1 ? '' : 's'}`;
+    decorateCards();
     observeReveals();
   }
 
@@ -888,32 +998,70 @@
   const soundBtn = $('#soundToggle');
   let audio = null;
 
+  /* An original generative score, synthesised in the browser: a low drone, a
+     quiet minor pad, filtered wind, and pentatonic chimes that land every few
+     seconds. Nothing loops audibly, so it never wears out the way a short
+     backing track does. */
   function buildAudio() {
     const Ctx = window.AudioContext || window.webkitAudioContext;
     if (!Ctx) return null;
     const ctx = new Ctx();
+
     const master = ctx.createGain();
     master.gain.value = 0;
     master.connect(ctx.destination);
 
-    /* low drone: two detuned oscillators through a soft filter */
-    const filter = ctx.createBiquadFilter();
-    filter.type = 'lowpass';
-    filter.frequency.value = 420;
-    filter.Q.value = 0.6;
-    filter.connect(master);
+    /* a damped feedback delay stands in for a reverb tail — cheap, and warm */
+    const delay = ctx.createDelay(1.5);
+    delay.delayTime.value = 0.38;
+    const damp = ctx.createBiquadFilter();
+    damp.type = 'lowpass';
+    damp.frequency.value = 1700;
+    const fb = ctx.createGain();
+    fb.gain.value = 0.3;
+    delay.connect(damp).connect(fb).connect(delay);
+    delay.connect(master);
 
-    [55, 82.5].forEach((f, i) => {
+    /* drone — root and fifth, well below everything else */
+    const droneFilter = ctx.createBiquadFilter();
+    droneFilter.type = 'lowpass';
+    droneFilter.frequency.value = 420;
+    droneFilter.Q.value = 0.6;
+    droneFilter.connect(master);
+    [[55, 'triangle', 0.085], [82.4, 'sine', 0.05]].forEach(([f, type, vol]) => {
       const osc = ctx.createOscillator();
-      osc.type = i ? 'sine' : 'triangle';
+      osc.type = type;
       osc.frequency.value = f;
       const g = ctx.createGain();
-      g.gain.value = i ? 0.06 : 0.1;
-      osc.connect(g).connect(filter);
+      g.gain.value = vol;
+      osc.connect(g).connect(droneFilter);
       osc.start();
     });
 
-    /* wind: filtered noise, slowly swelling */
+    /* pad — an A minor triad kept faint, with the filter breathing across it */
+    const padFilter = ctx.createBiquadFilter();
+    padFilter.type = 'lowpass';
+    padFilter.frequency.value = 760;
+    padFilter.Q.value = 0.8;
+    padFilter.connect(master);
+    [220, 261.63, 329.63].forEach((f, i) => {
+      const osc = ctx.createOscillator();
+      osc.type = 'sine';
+      osc.frequency.value = f;
+      osc.detune.value = (i - 1) * 4;
+      const g = ctx.createGain();
+      g.gain.value = 0.021;
+      osc.connect(g).connect(padFilter);
+      osc.start();
+    });
+    const sweep = ctx.createOscillator();
+    sweep.frequency.value = 0.045;
+    const sweepAmt = ctx.createGain();
+    sweepAmt.gain.value = 280;
+    sweep.connect(sweepAmt).connect(padFilter.frequency);
+    sweep.start();
+
+    /* wind — band-passed noise that swells and falls back */
     const len = ctx.sampleRate * 4;
     const buf = ctx.createBuffer(1, len, ctx.sampleRate);
     const data = buf.getChannelData(0);
@@ -926,36 +1074,86 @@
     nf.frequency.value = 620;
     nf.Q.value = 0.5;
     const ng = ctx.createGain();
-    ng.gain.value = 0.05;
+    ng.gain.value = 0.042;
     noise.connect(nf).connect(ng).connect(master);
     noise.start();
 
-    /* slow swell on the wind so it never sits still */
     const lfo = ctx.createOscillator();
     lfo.frequency.value = 0.06;
-    const lfoGain = ctx.createGain();
-    lfoGain.gain.value = 0.035;
-    lfo.connect(lfoGain).connect(ng.gain);
+    const lfoAmt = ctx.createGain();
+    lfoAmt.gain.value = 0.03;
+    lfo.connect(lfoAmt).connect(ng.gain);
     lfo.start();
 
-    return { ctx, master };
+    /* chimes — a minor pentatonic, struck sparsely and left to ring out */
+    const SCALE = [440, 523.25, 587.33, 659.25, 783.99, 880, 1046.5];
+    let chimeTimer = null;
+
+    function strike() {
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      osc.type = 'sine';
+      osc.frequency.value = SCALE[Math.floor(Math.random() * SCALE.length)];
+      const g = ctx.createGain();
+      g.gain.setValueAtTime(0.0001, now);
+      g.gain.exponentialRampToValueAtTime(0.05, now + 0.012);
+      g.gain.exponentialRampToValueAtTime(0.0001, now + 3.6);
+      osc.connect(g);
+      g.connect(master);
+      g.connect(delay);
+      osc.start(now);
+      osc.stop(now + 3.8);
+    }
+
+    function queue() {
+      chimeTimer = setTimeout(() => { strike(); queue(); }, 5200 + Math.random() * 9000);
+    }
+
+    return {
+      ctx, master,
+      startChimes() { if (!chimeTimer) queue(); },
+      stopChimes() { clearTimeout(chimeTimer); chimeTimer = null; }
+    };
   }
 
-  soundBtn.addEventListener('click', () => {
-    const on = soundBtn.getAttribute('aria-pressed') === 'true';
+  const SOUND_PREF = 'amirah-sound';
+
+  function setSound(on, announce) {
     if (!audio) audio = buildAudio();
-    if (!audio) { toast('Sound is not available here'); return; }
+    if (!audio) { if (announce) toast('Sound is not available here'); return; }
 
     audio.ctx.resume();
     const t = audio.ctx.currentTime;
-    audio.master.gain.cancelScheduledValues(t);
-    audio.master.gain.setValueAtTime(audio.master.gain.value, t);
-    audio.master.gain.linearRampToValueAtTime(on ? 0 : 0.5, t + (on ? 0.6 : 2.4));
+    const g = audio.master.gain;
+    g.cancelScheduledValues(t);
+    g.setValueAtTime(g.value, t);
+    g.linearRampToValueAtTime(on ? 0.5 : 0, t + (on ? 2.6 : 0.7));
+    if (on) audio.startChimes(); else audio.stopChimes();
 
-    soundBtn.setAttribute('aria-pressed', String(!on));
-    soundBtn.setAttribute('aria-label', on ? 'Turn ambient sound on' : 'Turn ambient sound off');
-    toast(on ? 'The workshop falls quiet' : 'Ambient sound on');
+    soundBtn.classList.remove('is-hint');
+    soundBtn.setAttribute('aria-pressed', String(on));
+    soundBtn.setAttribute('aria-label', on ? 'Turn ambient sound off' : 'Turn ambient sound on');
+    try { localStorage.setItem(SOUND_PREF, on ? 'on' : 'off'); } catch (e) { /* private mode */ }
+    if (announce) toast(on ? 'Ambient sound on' : 'The workshop falls quiet');
+  }
+
+  soundBtn.addEventListener('click', () => {
+    setSound(soundBtn.getAttribute('aria-pressed') !== 'true', true);
   });
+
+  /* Browsers refuse to start audio before a gesture, so a returning visitor who
+     left it on gets it back the moment they touch the page — and a first-time
+     visitor just gets a gently pulsing speaker to notice. */
+  let soundPref = null;
+  try { soundPref = localStorage.getItem(SOUND_PREF); } catch (e) { /* private mode */ }
+
+  if (soundPref === 'on') {
+    const resume = () => setSound(true, false);
+    ['pointerdown', 'keydown', 'scroll'].forEach((evt) =>
+      window.addEventListener(evt, resume, { once: true, passive: true }));
+  } else if (soundPref === null) {
+    soundBtn.classList.add('is-hint');
+  }
 
   /* ────────────────────────────── start up ───────────────────────────── */
 
