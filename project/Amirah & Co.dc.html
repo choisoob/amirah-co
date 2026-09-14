@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Barlow+Condensed:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin:0; padding:0; background:#08080a; }
+  body { -webkit-font-smoothing:antialiased; }
+  a { color:#d9b26a; text-decoration:none; }
+  a:hover { color:#f0dcae; }
+  ::selection { background:#3a2f18; color:#f0dcae; }
+  @keyframes drift { 0%{transform:translate3d(0,0,0);opacity:0} 12%{opacity:.75} 88%{opacity:.5} 100%{transform:translate3d(24px,-560px,0);opacity:0} }
+  @keyframes flicker { 0%,100%{opacity:.55} 40%{opacity:.85} 55%{opacity:.42} 72%{opacity:.78} }
+  @keyframes breathe { 0%,100%{opacity:.30; transform:scale(1)} 50%{opacity:.55; transform:scale(1.06)} }
+  @keyframes mistpan { 0%{transform:translateX(-4%)} 100%{transform:translateX(4%)} }
+</style>
+</helmet>
+
+<div style="background:#08080a; color:#cfc7b8; font-family:'EB Garamond',Georgia,serif; overflow-x:hidden; position:relative">
+
+  <nav style="{{ navStyle }}">
+    <div style="max-width:1440px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:32px; padding:0 clamp(16px,3vw,40px)">
+      <a href="#top" style="display:flex; align-items:baseline; gap:10px; color:#e8dcc0">
+        <span style="font-family:'Marcellus',serif; font-size:22px; letter-spacing:.06em; color:#e8dcc0">Amirah</span>
+        <span style="color:#d9b26a; font-size:14px">&amp;</span>
+        <span style="font-family:'Marcellus',serif; font-size:22px; letter-spacing:.06em; color:#e8dcc0">Co.</span>
+      </a>
+      <div style="display:flex; align-items:center; gap:clamp(18px,2.4vw,38px); font-family:'Barlow Condensed',sans-serif; font-size:13px; letter-spacing:.24em; text-transform:uppercase">
+        <a href="#top" style="color:#cfc7b8" style-hover="color:#d9b26a">Home</a>
+        <a href="#shop" style="color:#cfc7b8" style-hover="color:#d9b26a">Shop</a>
+        <a href="#categories" style="color:#cfc7b8" style-hover="color:#d9b26a">Collections</a>
+        <a href="#chapters" style="color:#cfc7b8" style-hover="color:#d9b26a">Our Story</a>
+        <a href="#about" style="color:#cfc7b8" style-hover="color:#d9b26a">About</a>
+      </div>
+      <div style="display:flex; align-items:center; gap:18px; font-family:'Barlow Condensed',sans-serif; font-size:12px; letter-spacing:.18em; color:#9a927f">
+        <span style="cursor:pointer; font-size:15px" style-hover="color:#d9b26a">⌕</span>
+        <span style="cursor:pointer; display:flex; align-items:center; gap:5px" style-hover="color:#d9b26a">♡ <span style="color:#d9b26a">{{ wishCount }}</span></span>
+        <span style="cursor:pointer" style-hover="color:#d9b26a">◍</span>
+        <span onClick="{{ noop }}" style="cursor:pointer; display:flex; align-items:center; gap:7px; border:1px solid rgba(217,178,106,.34); padding:7px 13px; color:#e8dcc0; background:rgba(217,178,106,.06)" style-hover="border-color:rgba(217,178,106,.75)">CART <span style="color:#d9b26a">{{ cartCount }}</span></span>
+      </div>
+    </div>
+  </nav>
+
+  <section id="top" style="position:relative; min-height:100vh; box-sizing:border-box; padding:132px 0 64px; display:flex; align-items:center; justify-content:center; overflow:hidden; background:radial-gradient(120% 90% at 50% 108%, #14182c 0%, #0b0b14 46%, #08080a 100%)">
+    <div style="position:absolute; inset:0; background:radial-gradient(38% 34% at 50% 16%, rgba(143,180,232,.20), transparent 70%)"></div>
+    <div style="position:absolute; inset:auto 0 0 0; height:62%; opacity:.5; animation:mistpan 26s ease-in-out infinite alternate; background:linear-gradient(to top, rgba(143,180,232,.12), transparent 68%), repeating-linear-gradient(115deg, rgba(255,255,255,.018) 0 2px, transparent 2px 11px)"></div>
+    <div style="position:absolute; left:50%; top:46%; transform:translate(-50%,-50%); width:min(760px,86vw); aspect-ratio:1/1; border-radius:50%; animation:breathe 9s ease-in-out infinite; background:radial-gradient(circle, rgba(217,178,106,.16), rgba(143,180,232,.07) 42%, transparent 68%)"></div>
+    <div style="position:absolute; left:50%; top:44%; transform:translate(-50%,-50%) rotate(45deg); width:min(360px,52vw); aspect-ratio:1/1; border:1px solid rgba(217,178,106,.16)"></div>
+    <div style="position:absolute; left:50%; top:44%; transform:translate(-50%,-50%); width:min(440px,62vw); aspect-ratio:1/1; border:1px solid rgba(217,178,106,.10); border-radius:50%"></div>
+
+    <div style="position:absolute; inset:auto 0 -2% 0; height:46%; display:flex; align-items:flex-end; justify-content:center; opacity:.85">
+      <div style="width:100%; max-width:1500px; height:100%; background:repeating-linear-gradient(90deg, rgba(255,255,255,.04) 0 2px, transparent 2px 9px); mask-image:linear-gradient(to top, #000 12%, transparent 88%); -webkit-mask-image:linear-gradient(to top, #000 12%, transparent 88%); display:flex; align-items:flex-end; justify-content:center; padding-bottom:26px">
+        <span style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:10px; letter-spacing:.26em; color:rgba(232,220,192,.42); text-transform:uppercase">castle silhouette plate — drop image</span>
+      </div>
+    </div>
+
+    {{ particleField }}
+
+    <div data-reveal="1" style="position:relative; text-align:center; padding:0 24px; max-width:980px">
+      <p style="font-family:'Barlow Condensed',sans-serif; font-size:12px; letter-spacing:.42em; text-transform:uppercase; color:#d9b26a; margin:0 0 30px">Enter the magical world</p>
+      <h1 style="font-family:'Marcellus',serif; font-weight:400; font-size:clamp(40px,7.2vw,104px); line-height:1.02; letter-spacing:.005em; color:#f2ecdd; margin:0; text-wrap:balance">Every story begins<br />with a little magic</h1>
+      <p style="max-width:520px; margin:30px auto 0; font-size:clamp(16px,1.3vw,19px); line-height:1.75; color:#a49c8b">Robes, wands and keepsakes made for those who never stopped waiting for the letter. Each piece is catalogued, sealed and sent from our workshop.</p>
+      <div style="display:flex; flex-wrap:wrap; gap:16px; justify-content:center; margin-top:44px; font-family:'Barlow Condensed',sans-serif; font-size:13px; letter-spacing:.26em; text-transform:uppercase">
+        <a href="#shop" style="padding:17px 36px; background:#d9b26a; color:#14110a; border:1px solid #d9b26a" style-hover="background:#f0dcae">Explore the collection</a>
+        <a href="#chapters" style="padding:17px 36px; border:1px solid rgba(232,220,192,.28); color:#e8dcc0" style-hover="border-color:#d9b26a; color:#d9b26a">Begin your journey</a>
+      </div>
+      <p style="margin:56px 0 0; font-family:ui-monospace,monospace; font-size:10px; letter-spacing:.3em; color:rgba(207,199,184,.35)">SCROLL ✦ CHAPTER 01</p>
+    </div>
+  </section>
+
+  <div id="chapters"></div>
+  <sc-for list="{{ chapters }}" as="ch" hint-placeholder-count="2">
+    <section style="{{ ch.shell }}">
+      <div style="position:absolute; inset:0; opacity:.55; background:repeating-linear-gradient(0deg, rgba(255,255,255,.012) 0 1px, transparent 1px 6px)"></div>
+      <div data-reveal="1" style="position:relative; width:100%; max-width:1360px; margin:0 auto; padding:clamp(80px,10vh,140px) clamp(20px,4vw,56px); display:grid; gap:clamp(32px,5vw,84px); align-items:center; grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+        <div style="{{ ch.mediaOrder }}">
+          <div style="position:relative; aspect-ratio:4/5; border:1px solid rgba(217,178,106,.20); display:flex; align-items:center; justify-content:center; background:repeating-linear-gradient(135deg, rgba(255,255,255,.035) 0 3px, transparent 3px 14px)">
+            <span style="font-family:ui-monospace,monospace; font-size:10px; letter-spacing:.24em; color:rgba(232,220,192,.5); text-transform:uppercase; text-align:center; padding:0 24px">{{ ch.plate }}</span>
+            <div style="position:absolute; top:-1px; left:-1px; width:26px; height:26px; border-top:1px solid #d9b26a; border-left:1px solid #d9b26a"></div>
+            <div style="position:absolute; bottom:-1px; right:-1px; width:26px; height:26px; border-bottom:1px solid #d9b26a; border-right:1px solid #d9b26a"></div>
+          </div>
+        </div>
+        <div>
+          <p style="font-family:'Barlow Condensed',sans-serif; font-size:12px; letter-spacing:.4em; text-transform:uppercase; color:#d9b26a; margin:0 0 20px">Chapter {{ ch.no }}</p>
+          <h2 style="font-family:'Marcellus',serif; font-weight:400; font-size:clamp(34px,4.6vw,68px); line-height:1.06; color:#f2ecdd; margin:0">{{ ch.title }}</h2>
+          <div style="display:flex; align-items:center; gap:12px; margin:30px 0; max-width:260px">
+            <span style="flex:1; height:1px; background:linear-gradient(to right, rgba(217,178,106,.6), transparent)"></span>
+            <span style="color:#d9b26a; font-size:11px">✦</span>
+          </div>
+          <p style="font-size:clamp(15px,1.2vw,18px); line-height:1.8; color:#a49c8b; max-width:46ch; margin:0">{{ ch.body }}</p>
+          <a href="#shop" style="display:inline-block; margin-top:36px; font-family:'Barlow Condensed',sans-serif; font-size:12px; letter-spacing:.3em; text-transform:uppercase; border-bottom:1px solid rgba(217,178,106,.4); padding-bottom:6px" style-hover="border-color:#d9b26a">Discover more →</a>
+        </div>
+      </div>
+    </section>
+  </sc-for>
+
+  <section id="categories" style="position:relative; padding:clamp(90px,12vh,150px) 0; background:linear-gradient(#0a0a10, #08080a)">
+    <div style="max-width:1360px; margin:0 auto; padding:0 clamp(20px,4vw,56px)">
+      <p style="font-family:'Barlow Condensed',sans-serif; font-size:12px; letter-spacing:.4em; text-transform:uppercase; color:#d9b26a; margin:0 0 18px">Collections</p>
+      <h2 style="font-family:'Marcellus',serif; font-weight:400; font-size:clamp(30px,4vw,56px); color:#f2ecdd; margin:0 0 8px">Six doors, one house</h2>
+    </div>
+    <div style="margin-top:clamp(40px,6vh,70px); border-top:1px solid rgba(217,178,106,.14)">
+      <sc-for list="{{ categories }}" as="cat" hint-placeholder-count="3">
+        <a href="#shop" onClick="{{ cat.pick }}" data-reveal="1" style="position:relative; display:block; border-bottom:1px solid rgba(217,178,106,.14); overflow:hidden; color:#cfc7b8" style-hover="background:rgba(217,178,106,.05)">
+          <div style="position:absolute; inset:0; opacity:.5; background:repeating-linear-gradient(115deg, rgba(255,255,255,.03) 0 3px, transparent 3px 16px)"></div>
+          <div style="position:relative; max-width:1360px; margin:0 auto; padding:clamp(26px,3.6vh,44px) clamp(20px,4vw,56px); display:flex; align-items:center; justify-content:space-between; gap:24px">
+            <div style="display:flex; align-items:baseline; gap:clamp(16px,2.5vw,40px)">
+              <span style="font-family:ui-monospace,monospace; font-size:11px; color:rgba(217,178,106,.6)">{{ cat.index }}</span>
+              <span style="font-family:'Marcellus',serif; font-size:clamp(24px,3.4vw,46px); color:#e8dcc0; letter-spacing:.02em">{{ cat.name }}</span>
+              <span style="font-family:'Barlow Condensed',sans-serif; font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:#7e7768">{{ cat.note }}</span>
+            </div>
+            <span style="font-family:'Barlow Condensed',sans-serif; font-size:12px; letter-spacing:.26em; text-transform:uppercase; color:#d9b26a">Enter →</span>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="position:relative; overflow:hidden; padding:clamp(90px,13vh,160px) clamp(20px,4vw,56px); background:radial-gradient(80% 70% at 22% 40%, #191026 0%, #0b0912 55%, #08080a 100%)">
+    {{ featuredParticles }}
+    <div data-reveal="1" style="position:relative; max-width:1360px; margin:0 auto; display:grid; gap:clamp(36px,5vw,88px); align-items:center; grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
+      <div style="position:relative">
+        <div style="position:absolute; inset:-8%; border-radius:50%; animation:breathe 8s ease-in-out infinite; background:radial-gradient(circle, rgba(217,178,106,.18), transparent 65%)"></div>
+        <div style="position:relative; aspect-ratio:1/1; border:1px solid rgba(217,178,106,.24); display:flex; align-items:center; justify-content:center; background:repeating-linear-gradient(45deg, rgba(255,255,255,.03) 0 3px, transparent 3px 15px); backdrop-filter:blur(2px)">
+          <span style="font-family:ui-monospace,monospace; font-size:10px; letter-spacing:.24em; color:rgba(232,220,192,.5); text-transform:uppercase">featured artifact — drop image</span>
+        </div>
+      </div>
+      <div>
+        <p style="font-family:'Barlow Condensed',sans-serif; font-size:12px; letter-spacing:.4em; text-transform:uppercase; color:#d9b26a; margin:0 0 20px">Featured artifact</p>
+        <p style="font-family:'Barlow Condensed',sans-serif; font-size:13px; letter-spacing:.26em; text-transform:uppercase; color:#8c8474; margin:0 0 14px">The Enchanted Collection</p>
+        <h2 style="font-family:'Marcellus',serif; font-weight:400; font-size:clamp(32px,4.4vw,62px); line-height:1.08; color:#f2ecdd; margin:0">Founders' Grimoire</h2>
+        <p style="font-size:clamp(15px,1.2vw,18px); line-height:1.8; color:#a49c8b; max-width:48ch; margin:26px 0 0">Hand-bound in oxblood leather, 240 pages of blank vellum, brass clasp and a wax seal struck from the original die. Numbered to one hundred each winter.</p>
+        <p style="font-family:'Marcellus',serif; font-size:30px; color:#d9b26a; margin:30px 0 0">RM 459</p>
+        <div style="display:flex; align-items:center; gap:22px; margin:28px 0 0">
+          <div style="display:flex; align-items:center; border:1px solid rgba(217,178,106,.28)">
+            <span onClick="{{ decQty }}" style="padding:12px 18px; cursor:pointer; color:#d9b26a" style-hover="background:rgba(217,178,106,.1)">−</span>
+            <span style="padding:12px 8px; min-width:34px; text-align:center; font-family:'Barlow Condensed',sans-serif; letter-spacing:.14em; color:#e8dcc0">{{ qty }}</span>
+            <span onClick="{{ incQty }}" style="padding:12px 18px; cursor:pointer; color:#d9b26a" style-hover="background:rgba(217,178,106,.1)">+</span>
+          </div>
+          <span style="font-family:ui-monospace,monospace; font-size:10px; letter-spacing:.2em; color:#7e7768">LIMITED · 100 / YEAR</span>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:30px; font-family:'Barlow Condensed',sans-serif; font-size:13px; letter-spacing:.26em; text-transform:uppercase">
+          <span onClick="{{ claimFeatured }}" style="padding:17px 34px; background:#d9b26a; color:#14110a; cursor:pointer" style-hover="background:#f0dcae">Claim this artifact</span>
+          <span onClick="{{ addWish }}" style="padding:17px 30px; border:1px solid rgba(232,220,192,.26); color:#e8dcc0; cursor:pointer" style-hover="border-color:#d9b26a; color:#d9b26a">♡ Add to wishlist</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="shop" style="position:relative; padding:clamp(90px,12vh,150px) clamp(20px,4vw,56px); background:#08080a">
+    <div style="max-width:1360px; margin:0 auto">
+      <div data-reveal="1" style="max-width:640px">
+        <p style="font-family:'Barlow Condensed',sans-serif; font-size:12px; letter-spacing:.4em; text-transform:uppercase; color:#d9b26a; margin:0 0 18px">Chapter 06</p>
+        <h2 style="font-family:'Marcellus',serif; font-weight:400; font-size:clamp(34px,5vw,72px); line-height:1.04; color:#f2ecdd; margin:0">The Collection</h2>
+        <p style="font-size:clamp(15px,1.2vw,18px); line-height:1.8; color:#a49c8b; margin:24px 0 0">Every artifact is catalogued by house and hand-finished before it leaves the workshop. Filter the shelves below.</p>
+      </div>
+
+      <div style="margin-top:clamp(40px,6vh,64px); border:1px solid rgba(217,178,106,.16); background:rgba(255,255,255,.012)">
+        <div style="display:flex; align-items:center; gap:14px; padding:16px 20px; border-bottom:1px solid rgba(217,178,106,.14)">
+          <span style="color:#d9b26a">⌕</span>
+          <input value="{{ query }}" onChange="{{ onQuery }}" placeholder="Search the shelves…" style="flex:1; background:transparent; border:0; outline:none; color:#e8dcc0; font-family:'EB Garamond',serif; font-size:17px" />
+          <span style="font-family:ui-monospace,monospace; font-size:10px; letter-spacing:.2em; color:#7e7768">{{ resultCount }} ARTIFACTS</span>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:10px; padding:16px 20px; border-bottom:1px solid rgba(217,178,106,.14)">
+          <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+            <span onClick="{{ f.pick }}" style="{{ f.chip }}">{{ f.label }}</span>
+          </sc-for>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px 18px; padding:14px 20px; font-family:'Barlow Condensed',sans-serif; font-size:12px; letter-spacing:.22em; text-transform:uppercase">
+          <span style="color:#7e7768">Sort</span>
+          <sc-for list="{{ sorts }}" as="s" hint-placeholder-count="4">
+            <span onClick="{{ s.pick }}" style="{{ s.chip }}">{{ s.label }}</span>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="margin-top:clamp(28px,4vh,44px); display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:clamp(16px,2vw,28px); grid-auto-flow:dense">
+        <sc-for list="{{ shown }}" as="p" hint-placeholder-count="6">
+          <article data-reveal="1" style="{{ p.cell }}">
+            <div style="position:relative; border:1px solid rgba(217,178,106,.16); background:rgba(255,255,255,.014); height:100%; display:flex; flex-direction:column" style-hover="border-color:rgba(217,178,106,.5)">
+              <div style="{{ p.plate }}">
+                <span style="font-family:ui-monospace,monospace; font-size:10px; letter-spacing:.22em; color:rgba(232,220,192,.45); text-transform:uppercase; text-align:center; padding:0 18px">{{ p.plateLabel }}</span>
+                <span style="position:absolute; top:14px; right:16px; color:#d9b26a; font-size:11px; animation:flicker 4s ease-in-out infinite">✦</span>
+                <span style="position:absolute; top:14px; left:16px; font-family:ui-monospace,monospace; font-size:9px; letter-spacing:.2em; color:rgba(217,178,106,.7)">{{ p.collection }}</span>
+              </div>
+              <div style="padding:22px 24px 26px; display:flex; flex-direction:column; gap:10px; flex:1">
+                <h3 style="font-family:'Marcellus',serif; font-weight:400; font-size:clamp(19px,1.5vw,24px); color:#f2ecdd; margin:0">{{ p.name }}</h3>
+                <p style="font-size:15px; line-height:1.65; color:#98907f; margin:0; flex:1">{{ p.desc }}</p>
+                <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:8px">
+                  <span style="font-family:'Marcellus',serif; font-size:21px; color:#d9b26a">{{ p.priceLabel }}</span>
+                  <span onClick="{{ p.claim }}" style="font-family:'Barlow Condensed',sans-serif; font-size:11px; letter-spacing:.24em; text-transform:uppercase; border:1px solid rgba(217,178,106,.34); padding:11px 18px; color:#e8dcc0; cursor:pointer" style-hover="background:#d9b26a; color:#14110a; border-color:#d9b26a">Claim artifact</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </sc-for>
+      </div>
+      <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+        <p style="text-align:center; padding:70px 0; font-family:ui-monospace,monospace; font-size:11px; letter-spacing:.24em; color:#7e7768">NO ARTIFACTS MATCH THAT INCANTATION</p>
+      </sc-if>
+    </div>
+  </section>
+
+  <section id="detail" style="position:relative; padding:clamp(90px,12vh,150px) clamp(20px,4vw,56px); background:linear-gradient(#0a0910, #08080a)">
+    <div data-reveal="1" style="max-width:1360px; margin:0 auto; display:grid; gap:clamp(36px,5vw,72px); grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
+      <div>
+        <div style="position:relative; aspect-ratio:4/5; border:1px solid rgba(217,178,106,.2); display:flex; align-items:center; justify-content:center; background:repeating-linear-gradient(135deg, rgba(255,255,255,.035) 0 3px, transparent 3px 14px)">
+          <span style="font-family:ui-monospace,monospace; font-size:10px; letter-spacing:.24em; color:rgba(232,220,192,.5); text-transform:uppercase">{{ galleryLabel }}</span>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:12px">
+          <sc-for list="{{ gallery }}" as="g" hint-placeholder-count="4">
+            <div onClick="{{ g.pick }}" style="{{ g.thumb }}">{{ g.n }}</div>
+          </sc-for>
+        </div>
+      </div>
+      <div>
+        <p style="font-family:'Barlow Condensed',sans-serif; font-size:12px; letter-spacing:.34em; text-transform:uppercase; color:#d9b26a; margin:0 0 16px">Robes · Emberhall</p>
+        <h2 style="font-family:'Marcellus',serif; font-weight:400; font-size:clamp(30px,4vw,54px); line-height:1.08; color:#f2ecdd; margin:0">Emberhall Robe</h2>
+        <div style="display:flex; align-items:center; gap:12px; margin:18px 0 0">
+          <span style="color:#d9b26a; letter-spacing:.2em">★★★★★</span>
+          <span style="font-family:ui-monospace,monospace; font-size:10px; letter-spacing:.18em; color:#7e7768">128 REVIEWS</span>
+        </div>
+        <p style="font-family:'Marcellus',serif; font-size:30px; color:#e8dcc0; margin:24px 0 0">RM 100</p>
+        <p style="font-size:17px; line-height:1.8; color:#a49c8b; max-width:48ch; margin:22px 0 0">Heavy brushed wool, lined in warm crimson, with a deep hood and an embroidered crest at the breast. Cut long, for candlelit corridors.</p>
+
+        <p style="font-family:'Barlow Condensed',sans-serif; font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:#8c8474; margin:32px 0 12px">Size</p>
+        <div style="display:flex; flex-wrap:wrap; gap:10px">
+          <sc-for list="{{ variants }}" as="v" hint-placeholder-count="4">
+            <span onClick="{{ v.pick }}" style="{{ v.chip }}">{{ v.label }}</span>
+          </sc-for>
+        </div>
+
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:16px; margin-top:32px">
+          <div style="display:flex; align-items:center; border:1px solid rgba(217,178,106,.28)">
+            <span onClick="{{ decQty2 }}" style="padding:12px 18px; cursor:pointer; color:#d9b26a" style-hover="background:rgba(217,178,106,.1)">−</span>
+            <span style="padding:12px 8px; min-width:34px; text-align:center; font-family:'Barlow Condensed',sans-serif; color:#e8dcc0">{{ qty2 }}</span>
+            <span onClick="{{ incQty2 }}" style="padding:12px 18px; cursor:pointer; color:#d9b26a" style-hover="background:rgba(217,178,106,.1)">+</span>
+          </div>
+          <span onClick="{{ claimDetail }}" style="flex:1; min-width:230px; text-align:center; padding:18px 30px; background:#d9b26a; color:#14110a; font-family:'Barlow Condensed',sans-serif; font-size:13px; letter-spacing:.26em; text-transform:uppercase; cursor:pointer" style-hover="background:#f0dcae">Claim this artifact</span>
+          <span onClick="{{ addWish }}" style="padding:18px 24px; border:1px solid rgba(232,220,192,.26); color:#e8dcc0; font-family:'Barlow Condensed',sans-serif; font-size:13px; letter-spacing:.26em; text-transform:uppercase; cursor:pointer" style-hover="border-color:#d9b26a; color:#d9b26a">♡ Wishlist</span>
+        </div>
+
+        <div style="margin-top:44px; border-top:1px solid rgba(217,178,106,.16)">
+          <div style="display:flex; flex-wrap:wrap; gap:26px; padding:18px 0; font-family:'Barlow Condensed',sans-serif; font-size:12px; letter-spacing:.24em; text-transform:uppercase">
+            <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="4">
+              <span onClick="{{ t.pick }}" style="{{ t.chip }}">{{ t.label }}</span>
+            </sc-for>
+          </div>
+          <p style="font-size:16px; line-height:1.85; color:#a49c8b; margin:6px 0 0; max-width:56ch; border-top:1px solid rgba(217,178,106,.1); padding-top:24px">{{ tabBody }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" style="position:relative; overflow:hidden; padding:clamp(90px,13vh,160px) clamp(20px,4vw,56px); background:radial-gradient(70% 80% at 50% 0%, #16101c, #08080a 70%)">
+    <div data-reveal="1" style="max-width:760px; margin:0 auto; text-align:center">
+      <span style="display:inline-flex; align-items:center; justify-content:center; width:54px; height:54px; border:1px solid rgba(217,178,106,.4); color:#d9b26a; animation:flicker 5s ease-in-out infinite">✦</span>
+      <h2 style="font-family:'Marcellus',serif; font-weight:400; font-size:clamp(28px,3.6vw,50px); line-height:1.14; color:#f2ecdd; margin:30px 0 0">Magic site</h2>
+      <p style="font-size:17px; line-height:1.85; color:#a49c8b; margin:22px 0 0">Amirah &amp; Co. has kept a small workshop since 2019 — two tailors, one binder, one wandwright. We make in short runs, seal every parcel by hand, and send it out with a catalogue card.</p>
+      <a href="#shop" style="display:inline-block; margin-top:36px; font-family:'Barlow Condensed',sans-serif; font-size:12px; letter-spacing:.3em; text-transform:uppercase; border-bottom:1px solid rgba(217,178,106,.4); padding-bottom:6px" style-hover="border-color:#d9b26a">Visit the shelves →</a>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid rgba(217,178,106,.16); padding:clamp(50px,7vh,80px) clamp(20px,4vw,56px) 40px; background:#07070a">
+    <div style="max-width:1360px; margin:0 auto; display:grid; gap:36px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
+      <div>
+        <p style="font-family:'Marcellus',serif; font-size:22px; color:#e8dcc0; margin:0">Amirah &amp; Co.</p>
+        <p style="font-family:ui-monospace,monospace; font-size:10px; letter-spacing:.24em; color:#7e7768; margin:12px 0 0">MAGIC SITE · EST. 2019</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:10px; font-family:'Barlow Condensed',sans-serif; font-size:12px; letter-spacing:.22em; text-transform:uppercase">
+        <a href="#shop" style="color:#98907f">Shop all</a>
+        <a href="#categories" style="color:#98907f">Collections</a>
+        <a href="#detail" style="color:#98907f">Limited editions</a>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:10px; font-family:'Barlow Condensed',sans-serif; font-size:12px; letter-spacing:.22em; text-transform:uppercase">
+        <a href="#about" style="color:#98907f">Our story</a>
+        <a href="#about" style="color:#98907f">Shipping</a>
+        <a href="#about" style="color:#98907f">Contact</a>
+      </div>
+      <div>
+        <p style="font-family:'Barlow Condensed',sans-serif; font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:#98907f; margin:0 0 14px">The owl post</p>
+        <div style="display:flex; border:1px solid rgba(217,178,106,.26)">
+          <input placeholder="your address" style="flex:1; min-width:0; background:transparent; border:0; outline:none; padding:12px 14px; color:#e8dcc0; font-family:'EB Garamond',serif; font-size:15px" />
+          <span style="padding:12px 16px; background:rgba(217,178,106,.12); color:#d9b26a; cursor:pointer; font-family:'Barlow Condensed',sans-serif; font-size:11px; letter-spacing:.22em">SEND</span>
+        </div>
+      </div>
+    </div>
+    <p style="max-width:1360px; margin:44px auto 0; font-family:ui-monospace,monospace; font-size:10px; letter-spacing:.2em; color:#5d5851">© 2026 AMIRAH &amp; CO. — ALL ARTIFACTS ORIGINAL WORKS.</p>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#d9b26a&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#d9b26a&quot;,&quot;#c9a227&quot;,&quot;#b98a5a&quot;,&quot;#8fb4e8&quot;],&quot;section&quot;:&quot;Atmosphere&quot;}}">
+class Component extends DCLogic {
+  state = {
+    scrolled: false, cart: 0, wish: 2, qty: 1, qty2: 1,
+    query: "", cat: "ALL", sort: "FEATURED", variant: "M", tab: "DESCRIPTION", img: 1
+  };
+
+  get gold() { return this.props.accent ?? "#d9b26a"; }
+
+  products = [
+    { name: "Emberhall Robe", price: 100, cat: "ROBES", collection: "HOUSE LINE", desc: "Brushed wool, crimson lining, deep hood.", size: "lg" },
+    { name: "Serpentmere Robe", price: 100, cat: "ROBES", collection: "HOUSE LINE", desc: "Slate wool with jade silk trim.", size: "sm" },
+    { name: "Corvidspire Robe", price: 100, cat: "ROBES", collection: "HOUSE LINE", desc: "Midnight blue, bronze thread crest.", size: "sm" },
+    { name: "Thornhollow Robe", price: 100, cat: "ROBES", collection: "HOUSE LINE", desc: "Umber wool, honey-gold piping.", size: "md" },
+    { name: "Academy Uniform", price: 200, cat: "ROBES", collection: "TERM KIT", desc: "Shirt, tie, pinafore and grey knit.", size: "lg" },
+    { name: "Skyball Jersey", price: 69, cat: "ACCESSORIES", collection: "FIELD KIT", desc: "Padded canvas, numbered on the back.", size: "sm" },
+    { name: "Academy Sweater", price: 130, cat: "ROBES", collection: "TERM KIT", desc: "Lambswool, crest knitted in.", size: "md" },
+    { name: "House Scarf", price: 40, cat: "ACCESSORIES", collection: "TERM KIT", desc: "Two metres, fringed, twin stripe.", size: "sm" },
+    { name: "Ashwood Wand", price: 129, cat: "WANDS", collection: "WAND COLLECTION", desc: "Turned ashwood, waxed, in a fitted case.", size: "md" },
+    { name: "Nightbloom Wand", price: 149, cat: "WANDS", collection: "WAND COLLECTION", desc: "Blackened oak with a bone inlay.", size: "sm" },
+    { name: "Wax Seal Set", price: 59, cat: "COLLECTIBLES", collection: "DESK ORDER", desc: "Brass die, three sticks of oxblood wax.", size: "sm" },
+    { name: "Brass Astrolabe", price: 219, cat: "COLLECTIBLES", collection: "ARTIFACTS", desc: "Working rings, engraved star chart.", size: "md" },
+    { name: "Rune Pendant", price: 79, cat: "ACCESSORIES", collection: "ARTIFACTS", desc: "Cast pewter on a waxed cord.", size: "sm" },
+    { name: "First-Year Kit", price: 249, cat: "GIFTS", collection: "GIFT BOXES", desc: "Wand, scarf, seal set and letter.", size: "lg" },
+    { name: "Founders' Grimoire", price: 459, cat: "LIMITED EDITIONS", collection: "ENCHANTED", desc: "Leather-bound, numbered to one hundred.", size: "lg" }
+  ];
+
+  chapterData = [
+    { no: "01", title: "The Beginning", body: "A room above a bakery, one candle, and a box of letters that never found their owners. That is where the catalogue started.", plate: "candlelit bedroom — drop image", bg: "radial-gradient(70% 60% at 76% 40%, #201607 0%, #0d0b09 55%, #08080a 100%)" },
+    { no: "02", title: "The Invitation", body: "Every parcel leaves with a sealed card: the artifact's name, its maker, and the date it was finished. Read it before you open anything else.", plate: "parchment letter — drop image", bg: "radial-gradient(65% 60% at 26% 46%, #241d10 0%, #100d0a 58%, #08080a 100%)" },
+    { no: "03", title: "The Journey", body: "Wood is cut in winter and rested a full year before it is turned. Wool is milled in the north. Nothing is rushed to meet a season.", plate: "moonlit forest — drop image", bg: "radial-gradient(70% 60% at 72% 44%, #0d1a1c 0%, #0a1013 56%, #08080a 100%)" },
+    { no: "04", title: "The Discovery", body: "The shelves hold instruments as much as garments — astrolabes, seals, ledgers. Pieces built to be kept and handed on.", plate: "ancient library — drop image", bg: "radial-gradient(66% 60% at 28% 42%, #1a1424 0%, #100c16 56%, #08080a 100%)" },
+    { no: "05", title: "The Darkness", body: "Once a year we open the locked case. Twelve artifacts, sold once, never repeated, catalogued only after they are gone.", plate: "sealed case — drop image", bg: "radial-gradient(62% 58% at 74% 40%, #2a0e14 0%, #160a16 52%, #08080a 100%)" }
+  ];
+
+  catData = [
+    ["WANDS", "turned & rested"], ["ROBES", "milled wool"], ["COLLECTIBLES", "brass & vellum"],
+    ["ACCESSORIES", "small goods"], ["GIFTS", "sealed boxes"], ["LIMITED EDITIONS", "twelve a year"]
+  ];
+
+  tabCopy = {
+    DESCRIPTION: "Heavy brushed wool with a warm crimson lining, deep hood and an embroidered crest at the breast. Cut long, finished with a hand-stitched hem.",
+    DETAILS: "100% milled lambswool shell, cupro lining, horn fastening. Dry clean only. Made in short runs of forty; each robe carries a stitched catalogue number.",
+    SHIPPING: "Sealed and dispatched within three working days. Free delivery within Malaysia; international post from RM 45. Returns accepted unworn for thirty days.",
+    REVIEWS: "★★★★★ 128 reviews. \u201cHeavier than I expected in the best way — the lining is the colour of embers.\u201d Amira R., verified. \u201cArrived sealed with wax. My daughter has not taken it off.\u201d Daniel K., verified."
+  };
+
+  componentDidMount() {
+    this.onScroll = () => {
+      const s = window.scrollY > 40;
+      if (s !== this.state.scrolled) this.setState({ scrolled: s });
+    };
+    window.addEventListener("scroll", this.onScroll, { passive: true });
+    this.seen = new WeakSet();
+    this.io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = "1";
+          e.target.style.transform = "none";
+          this.io.unobserve(e.target);
+        }
+      });
+    }, { rootMargin: "-8% 0px -8% 0px" });
+    this.observe();
+  }
+
+  componentDidUpdate() { this.observe(); }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.onScroll);
+    if (this.io) this.io.disconnect();
+  }
+
+  observe() {
+    if (!this.io) return;
+    document.querySelectorAll("[data-reveal]").forEach((el) => {
+      if (this.seen.has(el)) return;
+      this.seen.add(el);
+      el.style.opacity = "0";
+      el.style.transform = "translateY(26px)";
+      el.style.transition = "opacity 1s cubic-bezier(.22,.7,.2,1), transform 1.1s cubic-bezier(.22,.7,.2,1)";
+      this.io.observe(el);
+    });
+  }
+
+  field(n, key, spread) {
+    if (!this.dust) this.dust = {};
+    if (!this.dust[key]) {
+      this.dust[key] = React.createElement(
+        "div",
+        { style: { position: "absolute", inset: 0, pointerEvents: "none", overflow: "hidden" } },
+        Array.from({ length: n }, (_, i) => {
+          const r = (s) => ((Math.sin((i + 1) * s) + 1) / 2);
+          const size = 1 + r(12.9898) * 2.2;
+          return React.createElement("span", {
+            key: i,
+            style: {
+              position: "absolute",
+              left: (4 + r(78.233) * 92).toFixed(2) + "%",
+              bottom: (-8 + r(43.11) * spread) + "%",
+              width: size + "px", height: size + "px", borderRadius: "50%",
+              background: i % 4 === 0 ? "rgba(143,180,232,.85)" : "rgba(232,205,150,.9)",
+              boxShadow: "0 0 8px rgba(217,178,106,.7)",
+              animation: "drift " + (13 + r(3.77) * 16).toFixed(1) + "s linear " + (-r(9.13) * 20).toFixed(1) + "s infinite"
+            }
+          });
+        })
+      );
+    }
+    return this.dust[key];
+  }
+
+  chip(active, strong) {
+    return {
+      fontFamily: "'Barlow Condensed',sans-serif", fontSize: "12px", letterSpacing: ".22em",
+      textTransform: "uppercase", padding: strong ? "9px 16px" : "6px 2px", cursor: "pointer",
+      color: active ? (strong ? "#14110a" : this.gold) : "#8c8474",
+      background: active && strong ? this.gold : "transparent",
+      border: strong ? "1px solid " + (active ? this.gold : "rgba(217,178,106,.22)") : "0",
+      borderBottom: strong ? undefined : "1px solid " + (active ? this.gold : "transparent"),
+      paddingBottom: strong ? undefined : "4px"
+    };
+  }
+
+  renderVals() {
+    const g = this.gold;
+    const cartCount = this.state.cart;
+    const add = (n) => () => this.setState((s) => ({ cart: s.cart + n }));
+
+    let list = this.products.filter((p) => {
+      const okCat = this.state.cat === "ALL" || p.cat === this.state.cat;
+      const q = this.state.query.trim().toLowerCase();
+      const okQ = !q || p.name.toLowerCase().includes(q) || p.collection.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q);
+      return okCat && okQ;
+    });
+    if (this.state.sort === "PRICE LOW → HIGH") list = list.slice().sort((a, b) => a.price - b.price);
+    if (this.state.sort === "PRICE HIGH → LOW") list = list.slice().sort((a, b) => b.price - a.price);
+    if (this.state.sort === "NEWEST") list = list.slice().reverse();
+
+    const cellFor = (size) => size === "lg"
+      ? { gridColumn: "span 2", gridRow: "span 2" }
+      : size === "md" ? { gridColumn: "span 2" } : {};
+    const plateFor = (size) => ({
+      position: "relative", display: "flex", alignItems: "center", justifyContent: "center",
+      aspectRatio: size === "lg" ? "4/3" : size === "md" ? "16/9" : "1/1",
+      borderBottom: "1px solid rgba(217,178,106,.14)",
+      background: "repeating-linear-gradient(135deg, rgba(255,255,255,.035) 0 3px, transparent 3px 14px)"
+    });
+
+    return {
+      noop: () => {},
+      navStyle: {
+        position: "fixed", top: this.state.scrolled ? "0" : "16px", left: 0, right: 0, zIndex: 50,
+        height: this.state.scrolled ? "62px" : "82px", display: "flex", alignItems: "center",
+        background: this.state.scrolled ? "rgba(6,6,9,.88)" : "rgba(12,12,18,.42)",
+        backdropFilter: "blur(14px) saturate(120%)",
+        borderTop: this.state.scrolled ? "0" : "1px solid rgba(217,178,106,.12)",
+        borderBottom: "1px solid " + (this.state.scrolled ? "rgba(217,178,106,.26)" : "rgba(217,178,106,.14)"),
+        transition: "all .5s cubic-bezier(.22,.7,.2,1)"
+      },
+      cartCount, wishCount: this.state.wish,
+      particleField: this.field(34, "hero", 60),
+      featuredParticles: this.field(18, "feat", 70),
+
+      chapters: this.chapterData.map((c) => ({
+        no: c.no, title: c.title, body: c.body, plate: c.plate,
+        shell: {
+          position: "relative", overflow: "hidden", display: "flex", alignItems: "center",
+          minHeight: "100vh", background: c.bg
+        },
+        mediaOrder: { order: c.no === "02" || c.no === "04" ? 2 : 0 }
+      })),
+
+      categories: this.catData.map((c, i) => ({
+        name: c[0], note: c[1], index: "0" + (i + 1),
+        pick: () => this.setState({ cat: c[0] })
+      })),
+
+      query: this.state.query,
+      onQuery: (e) => this.setState({ query: e.target.value }),
+      resultCount: list.length,
+      empty: list.length === 0,
+      filters: ["ALL", "WANDS", "ROBES", "COLLECTIBLES", "ACCESSORIES", "GIFTS", "LIMITED EDITIONS"].map((c) => ({
+        label: c, chip: this.chip(this.state.cat === c, true), pick: () => this.setState({ cat: c })
+      })),
+      sorts: ["FEATURED", "NEWEST", "PRICE LOW → HIGH", "PRICE HIGH → LOW"].map((s) => ({
+        label: s, chip: this.chip(this.state.sort === s, false), pick: () => this.setState({ sort: s })
+      })),
+      shown: list.map((p) => ({
+        name: p.name, desc: p.desc, collection: p.collection, priceLabel: "RM " + p.price,
+        plateLabel: p.name.toLowerCase() + " — drop image",
+        cell: cellFor(p.size), plate: plateFor(p.size), claim: add(1)
+      })),
+
+      qty: this.state.qty,
+      incQty: () => this.setState((s) => ({ qty: s.qty + 1 })),
+      decQty: () => this.setState((s) => ({ qty: Math.max(1, s.qty - 1) })),
+      claimFeatured: add(this.state.qty),
+      addWish: () => this.setState((s) => ({ wish: s.wish + 1 })),
+
+      galleryLabel: "robe view 0" + this.state.img + " — drop image",
+      gallery: [1, 2, 3, 4].map((n) => ({
+        n: "0" + n, pick: () => this.setState({ img: n }),
+        thumb: {
+          aspectRatio: "1/1", display: "flex", alignItems: "center", justifyContent: "center",
+          cursor: "pointer", fontFamily: "ui-monospace,monospace", fontSize: "10px", letterSpacing: ".16em",
+          color: this.state.img === n ? g : "rgba(232,220,192,.35)",
+          border: "1px solid " + (this.state.img === n ? g : "rgba(217,178,106,.16)"),
+          background: "repeating-linear-gradient(135deg, rgba(255,255,255,.03) 0 2px, transparent 2px 10px)"
+        }
+      })),
+      variants: ["XS", "S", "M", "L", "XL"].map((v) => ({
+        label: v, chip: this.chip(this.state.variant === v, true), pick: () => this.setState({ variant: v })
+      })),
+      qty2: this.state.qty2,
+      incQty2: () => this.setState((s) => ({ qty2: s.qty2 + 1 })),
+      decQty2: () => this.setState((s) => ({ qty2: Math.max(1, s.qty2 - 1) })),
+      claimDetail: add(this.state.qty2),
+      tabs: ["DESCRIPTION", "DETAILS", "SHIPPING", "REVIEWS"].map((t) => ({
+        label: t, chip: this.chip(this.state.tab === t, false), pick: () => this.setState({ tab: t })
+      })),
+      tabBody: this.tabCopy[this.state.tab]
+    };
+  }
+}
+</script>
+</body>
+</html>
