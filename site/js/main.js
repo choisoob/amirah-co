@@ -1028,7 +1028,7 @@
     droneFilter.frequency.value = 420;
     droneFilter.Q.value = 0.6;
     droneFilter.connect(master);
-    [[55, 'triangle', 0.085], [82.4, 'sine', 0.05]].forEach(([f, type, vol]) => {
+    [[55, 'triangle', 0.068], [82.4, 'sine', 0.042]].forEach(([f, type, vol]) => {
       const osc = ctx.createOscillator();
       osc.type = type;
       osc.frequency.value = f;
@@ -1085,28 +1085,57 @@
     lfo.connect(lfoAmt).connect(ng.gain);
     lfo.start();
 
-    /* chimes — a minor pentatonic, struck sparsely and left to ring out */
+    /* A celesta-ish voice: fundamental plus a quieter octave partial, struck
+       hard and left to decay. */
+    function voice(freq, at, dur, peak) {
+      [[freq, peak], [freq * 2, peak * 0.32]].forEach(([f, vol]) => {
+        const osc = ctx.createOscillator();
+        osc.type = 'sine';
+        osc.frequency.value = f;
+        const g = ctx.createGain();
+        g.gain.setValueAtTime(0.0001, at);
+        g.gain.exponentialRampToValueAtTime(vol, at + 0.014);
+        g.gain.exponentialRampToValueAtTime(0.0001, at + dur);
+        osc.connect(g);
+        g.connect(master);
+        g.connect(delay);
+        osc.start(at);
+        osc.stop(at + dur + 0.1);
+      });
+    }
+
+    /* Single notes between phrases, from the same minor scale. */
     const SCALE = [440, 523.25, 587.33, 659.25, 783.99, 880, 1046.5];
+
+    /* An original phrase in A minor: a question that falls, then an answer that
+       settles back on the root. Written for this shop, not borrowed. */
+    const MOTIF = [
+      [440.00, 0.00, 1.4], [523.25, 0.55, 1.4], [493.88, 1.10, 2.2],
+      [659.25, 2.20, 1.4], [587.33, 2.75, 1.4], [493.88, 3.30, 2.4],
+      [329.63, 4.40, 1.6], [392.00, 4.95, 1.6], [349.23, 5.50, 2.4],
+      [440.00, 6.60, 4.0]
+    ];
+
     let chimeTimer = null;
+    let sinceMotif = 0;
 
     function strike() {
-      const now = ctx.currentTime;
-      const osc = ctx.createOscillator();
-      osc.type = 'sine';
-      osc.frequency.value = SCALE[Math.floor(Math.random() * SCALE.length)];
-      const g = ctx.createGain();
-      g.gain.setValueAtTime(0.0001, now);
-      g.gain.exponentialRampToValueAtTime(0.05, now + 0.012);
-      g.gain.exponentialRampToValueAtTime(0.0001, now + 3.6);
-      osc.connect(g);
-      g.connect(master);
-      g.connect(delay);
-      osc.start(now);
-      osc.stop(now + 3.8);
+      voice(SCALE[Math.floor(Math.random() * SCALE.length)], ctx.currentTime, 3.6, 0.05);
+    }
+
+    function phrase() {
+      const t0 = ctx.currentTime + 0.05;
+      /* occasionally lift the whole phrase so it never sits in one register */
+      const shift = [1, 1, 1, 1.5, 0.6667][Math.floor(Math.random() * 5)];
+      MOTIF.forEach(([f, at, dur]) => voice(f * shift, t0 + at, dur, 0.058));
     }
 
     function queue() {
-      chimeTimer = setTimeout(() => { strike(); queue(); }, 5200 + Math.random() * 9000);
+      chimeTimer = setTimeout(() => {
+        if (sinceMotif >= 2) { phrase(); sinceMotif = 0; }
+        else { strike(); sinceMotif++; }
+        queue();
+      }, 5000 + Math.random() * 6500);
     }
 
     return {
