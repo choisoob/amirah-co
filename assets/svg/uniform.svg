@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500" role="img" aria-label="Academy Uniform">
+<title>Academy Uniform</title>
+<defs>
+<radialGradient id="halo" cx="50%" cy="45%" r="55%">
+<stop offset="0%" stop-color="#d9b26a" stop-opacity=".28"/>
+<stop offset="55%" stop-color="#d9b26a" stop-opacity=".07"/>
+<stop offset="100%" stop-color="#d9b26a" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#ffffff" stop-opacity=".10"/>
+<stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+</linearGradient>
+
+</defs>
+<ellipse cx="200" cy="240" rx="185" ry="215" fill="url(#halo)"/>
+<circle cx="342.7" cy="268.8" r="1.9" fill="#8fb4e8" opacity="0.41"/>
+<circle cx="260.6" cy="273.0" r="1.8" fill="#f0dcae" opacity="0.39"/>
+<circle cx="263.7" cy="202.7" r="2.1" fill="#f0dcae" opacity="0.47"/>
+<circle cx="229.6" cy="97.2" r="1.3" fill="#f0dcae" opacity="0.30"/>
+<circle cx="186.6" cy="76.0" r="1.5" fill="#8fb4e8" opacity="0.34"/>
+<circle cx="148.2" cy="196.4" r="3.5" fill="#f0dcae" opacity="0.74"/>
+<circle cx="320.8" cy="109.5" r="3.1" fill="#f0dcae" opacity="0.66"/>
+<circle cx="231.6" cy="288.0" r="2.7" fill="#f0dcae" opacity="0.58"/>
+<circle cx="161.0" cy="333.9" r="2.3" fill="#8fb4e8" opacity="0.51"/>
+<circle cx="268.7" cy="286.7" r="3.1" fill="#f0dcae" opacity="0.66"/>
+<circle cx="103.5" cy="334.6" r="2.6" fill="#f0dcae" opacity="0.57"/>
+<circle cx="50.2" cy="270.4" r="2.6" fill="#f0dcae" opacity="0.56"/>
+<circle cx="340.6" cy="76.3" r="1.2" fill="#8fb4e8" opacity="0.27"/>
+<circle cx="217.0" cy="178.4" r="2.2" fill="#f0dcae" opacity="0.47"/>
+
+<path d="M 150 132 L 108 162 L 128 216 L 160 190 Z" fill="#20222c" opacity=".92"/>
+<path d="M 250 132 L 292 162 L 272 216 L 240 190 Z" fill="#20222c" opacity=".92"/>
+<path d="M 150 132 L 250 132 L 260 298 L 140 298 Z" fill="#20222c"/>
+<path d="M 150 132 L 250 132 L 260 298 L 140 298 Z" fill="url(#sheen)"/>
+<path d="M 176 132 L 200 176 L 224 132 L 244 138 L 216 186 L 184 186 L 156 138 Z" fill="#20222c" opacity=".55"/>
+<path d="M 192 168 L 208 168 L 214 186 L 200 200 L 186 186 Z" fill="#6d2a33"/>
+<path d="M 186 200 L 214 200 L 210 272 L 200 284 L 190 272 Z" fill="#6d2a33"/>
+<g stroke="#d9b26a" stroke-opacity=".5" stroke-width="2.6">
+<path d="M 188 218 L 212 212"/>
+<path d="M 190 240 L 211 234"/>
+</g>
+<path d="M 140 298 L 260 298 L 276 436 L 124 436 Z" fill="#2a2030"/>
+<path d="M 132 300 L 126 436" stroke="#d9b26a" stroke-opacity=".18" stroke-width="1.6"/>
+<path d="M 152 300 L 146 436" stroke="#d9b26a" stroke-opacity=".18" stroke-width="1.6"/>
+<path d="M 172 300 L 166 436" stroke="#d9b26a" stroke-opacity=".18" stroke-width="1.6"/>
+<path d="M 192 300 L 186 436" stroke="#d9b26a" stroke-opacity=".18" stroke-width="1.6"/>
+<path d="M 212 300 L 206 436" stroke="#d9b26a" stroke-opacity=".18" stroke-width="1.6"/>
+<path d="M 232 300 L 226 436" stroke="#d9b26a" stroke-opacity=".18" stroke-width="1.6"/>
+<path d="M 252 300 L 246 436" stroke="#d9b26a" stroke-opacity=".18" stroke-width="1.6"/>
+<path d="M 272 300 L 266 436" stroke="#d9b26a" stroke-opacity=".18" stroke-width="1.6"/>
+
+<path d="M 140 298 L 260 298 L 276 436 L 124 436 Z" fill="none" stroke="#d9b26a" stroke-opacity=".44" stroke-width="1.8"/>
+<path d="M 150 132 L 250 132 L 260 298 L 140 298 Z" fill="none" stroke="#d9b26a" stroke-opacity=".44" stroke-width="1.8"/>
+<path d="M 150 132 L 108 162 L 128 216 L 160 190 Z" fill="none" stroke="#d9b26a" stroke-opacity=".34" stroke-width="1.5"/>
+<path d="M 250 132 L 292 162 L 272 216 L 240 190 Z" fill="none" stroke="#d9b26a" stroke-opacity=".34" stroke-width="1.5"/>
+<path d="M 136 288 L 264 288" stroke="#d9b26a" stroke-opacity=".4" stroke-width="5"/>
+
+</svg>

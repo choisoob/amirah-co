@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500" role="img" aria-label="Ancient magical sigil">
+<title>Ancient magical sigil</title>
+<defs>
+<radialGradient id="core" cx="50%" cy="50%" r="50%">
+<stop offset="0%" stop-color="#f0dcae" stop-opacity=".55"/>
+<stop offset="60%" stop-color="#d9b26a" stop-opacity=".12"/>
+<stop offset="100%" stop-color="#d9b26a" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<circle cx="200" cy="250" r="190" fill="url(#core)"/>
+<circle cx="200" cy="250" r="164" fill="none" stroke="#d9b26a" stroke-opacity=".45" stroke-width="1.6"/>
+<circle cx="200" cy="250" r="150" fill="none" stroke="#d9b26a" stroke-opacity=".7" stroke-width="2.4"/>
+<circle cx="200" cy="250" r="104" fill="none" stroke="#d9b26a" stroke-opacity=".4" stroke-width="1.4"/>
+<path d="M 200.0 100.0 L 200.0 86.0" stroke="#d9b26a" stroke-opacity=".55" stroke-width="2.4"/>
+<path d="M 257.4 111.4 L 262.8 98.5" stroke="#d9b26a" stroke-opacity=".55" stroke-width="1.2"/>
+<path d="M 306.1 143.9 L 316.0 134.0" stroke="#d9b26a" stroke-opacity=".55" stroke-width="1.2"/>
+<path d="M 338.6 192.6 L 351.5 187.2" stroke="#d9b26a" stroke-opacity=".55" stroke-width="1.2"/>
+<path d="M 350.0 250.0 L 364.0 250.0" stroke="#d9b26a" stroke-opacity=".55" stroke-width="2.4"/>
+<path d="M 338.6 307.4 L 351.5 312.8" stroke="#d9b26a" stroke-opacity=".55" stroke-width="1.2"/>
+<path d="M 306.1 356.1 L 316.0 366.0" stroke="#d9b26a" stroke-opacity=".55" stroke-width="1.2"/>
+<path d="M 257.4 388.6 L 262.8 401.5" stroke="#d9b26a" stroke-opacity=".55" stroke-width="1.2"/>
+<path d="M 200.0 400.0 L 200.0 414.0" stroke="#d9b26a" stroke-opacity=".55" stroke-width="2.4"/>
+<path d="M 142.6 388.6 L 137.2 401.5" stroke="#d9b26a" stroke-opacity=".55" stroke-width="1.2"/>
+<path d="M 93.9 356.1 L 84.0 366.0" stroke="#d9b26a" stroke-opacity=".55" stroke-width="1.2"/>
+<path d="M 61.4 307.4 L 48.5 312.8" stroke="#d9b26a" stroke-opacity=".55" stroke-width="1.2"/>
+<path d="M 50.0 250.0 L 36.0 250.0" stroke="#d9b26a" stroke-opacity=".55" stroke-width="2.4"/>
+<path d="M 61.4 192.6 L 48.5 187.2" stroke="#d9b26a" stroke-opacity=".55" stroke-width="1.2"/>
+<path d="M 93.9 143.9 L 84.0 134.0" stroke="#d9b26a" stroke-opacity=".55" stroke-width="1.2"/>
+<path d="M 142.6 111.4 L 137.2 98.5" stroke="#d9b26a" stroke-opacity=".55" stroke-width="1.2"/>
+
+<g transform="translate(247.5 135.4) rotate(22.5)" stroke="#f0dcae" stroke-opacity=".75" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M 0 -9 L 0 9"/><path d="M 0 -3 L 7 -9"/><path d="M 0 4 L -7 -2"/></g>
+<g transform="translate(314.6 202.5) rotate(67.5)" stroke="#f0dcae" stroke-opacity=".75" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M 0 -9 L 0 9"/><path d="M 0 -3 L 7 -9"/><path d="M 0 4 L -7 -2"/></g>
+<g transform="translate(314.6 297.5) rotate(112.5)" stroke="#f0dcae" stroke-opacity=".75" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M 0 -9 L 0 9"/><path d="M 0 -3 L 7 -9"/><path d="M 0 4 L -7 -2"/></g>
+<g transform="translate(247.5 364.6) rotate(157.5)" stroke="#f0dcae" stroke-opacity=".75" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M 0 -9 L 0 9"/><path d="M 0 -3 L 7 -9"/><path d="M 0 4 L -7 -2"/></g>
+<g transform="translate(152.5 364.6) rotate(202.5)" stroke="#f0dcae" stroke-opacity=".75" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M 0 -9 L 0 9"/><path d="M 0 -3 L 7 -9"/><path d="M 0 4 L -7 -2"/></g>
+<g transform="translate(85.4 297.5) rotate(247.5)" stroke="#f0dcae" stroke-opacity=".75" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M 0 -9 L 0 9"/><path d="M 0 -3 L 7 -9"/><path d="M 0 4 L -7 -2"/></g>
+<g transform="translate(85.4 202.5) rotate(292.5)" stroke="#f0dcae" stroke-opacity=".75" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M 0 -9 L 0 9"/><path d="M 0 -3 L 7 -9"/><path d="M 0 4 L -7 -2"/></g>
+<g transform="translate(152.5 135.4) rotate(337.5)" stroke="#f0dcae" stroke-opacity=".75" stroke-width="2.2" stroke-linecap="round" fill="none"><path d="M 0 -9 L 0 9"/><path d="M 0 -3 L 7 -9"/><path d="M 0 4 L -7 -2"/></g>
+
+<path d="M 200 128 L 306 312 L 94 312 Z" fill="none" stroke="#f0dcae" stroke-opacity=".8" stroke-width="2.6" stroke-linejoin="round"/>
+<path d="M 200 372 L 94 188 L 306 188 Z" fill="none" stroke="#d9b26a" stroke-opacity=".55" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="200" cy="250" r="46" fill="none" stroke="#f0dcae" stroke-opacity=".65" stroke-width="2"/>
+<g stroke="#f0dcae" stroke-width="3" stroke-linecap="round" fill="none">
+<path d="M 200 214 L 200 286"/>
+<path d="M 200 236 L 226 218"/>
+<path d="M 200 236 L 174 218"/>
+<path d="M 200 266 L 222 250"/>
+</g>
+<circle cx="200" cy="250" r="7" fill="#f0dcae"/>
+</svg>

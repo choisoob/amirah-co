@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500" role="img" aria-label="House Scarf">
+<title>House Scarf</title>
+<defs>
+<radialGradient id="halo" cx="50%" cy="45%" r="55%">
+<stop offset="0%" stop-color="#d9b26a" stop-opacity=".28"/>
+<stop offset="55%" stop-color="#d9b26a" stop-opacity=".07"/>
+<stop offset="100%" stop-color="#d9b26a" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#ffffff" stop-opacity=".10"/>
+<stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+</linearGradient>
+
+</defs>
+<ellipse cx="200" cy="240" rx="185" ry="215" fill="url(#halo)"/>
+<circle cx="314.1" cy="359.4" r="2.0" fill="#8fb4e8" opacity="0.43"/>
+<circle cx="350.6" cy="366.3" r="2.0" fill="#f0dcae" opacity="0.44"/>
+<circle cx="58.7" cy="90.0" r="1.7" fill="#f0dcae" opacity="0.37"/>
+<circle cx="68.7" cy="293.0" r="1.3" fill="#f0dcae" opacity="0.29"/>
+<circle cx="254.1" cy="367.9" r="2.4" fill="#8fb4e8" opacity="0.51"/>
+<circle cx="259.8" cy="220.1" r="3.1" fill="#f0dcae" opacity="0.66"/>
+<circle cx="332.2" cy="180.0" r="1.9" fill="#f0dcae" opacity="0.41"/>
+<circle cx="344.7" cy="405.3" r="2.9" fill="#f0dcae" opacity="0.64"/>
+<circle cx="220.8" cy="126.4" r="1.5" fill="#8fb4e8" opacity="0.34"/>
+<circle cx="319.8" cy="197.1" r="1.9" fill="#f0dcae" opacity="0.41"/>
+<circle cx="171.9" cy="388.1" r="3.4" fill="#f0dcae" opacity="0.74"/>
+<circle cx="178.4" cy="121.8" r="2.8" fill="#f0dcae" opacity="0.61"/>
+<circle cx="187.8" cy="423.2" r="1.6" fill="#8fb4e8" opacity="0.35"/>
+<circle cx="89.1" cy="219.9" r="1.8" fill="#f0dcae" opacity="0.39"/>
+
+<!-- tails -->
+<path d="M 156 190 L 208 190 L 208 426 L 156 426 Z" fill="#1f2436"/>
+<path d="M 200 180 L 252 180 L 252 388 L 200 388 Z" fill="#1f2436"/>
+<path d="M 200 180 L 208 180 L 208 388 L 200 388 Z" fill="#000000" opacity=".4"/>
+<path d="M 156 250 L 208 250" stroke="#7d2a30" stroke-width="14" opacity=".92"/>
+<path d="M 156 288 L 208 288" stroke="#7d2a30" stroke-width="14" opacity=".92"/>
+<path d="M 156 326 L 208 326" stroke="#7d2a30" stroke-width="14" opacity=".92"/>
+<path d="M 200 232 L 252 232" stroke="#7d2a30" stroke-width="14" opacity=".92"/>
+<path d="M 200 270 L 252 270" stroke="#7d2a30" stroke-width="14" opacity=".92"/>
+<path d="M 200 308 L 252 308" stroke="#7d2a30" stroke-width="14" opacity=".92"/>
+
+<path d="M 156 190 L 208 190 L 208 426 L 156 426 Z" fill="url(#sheen)"/>
+<path d="M 200 180 L 252 180 L 252 388 L 200 388 Z" fill="url(#sheen)"/>
+<g fill="none" stroke="#d9b26a" stroke-opacity=".4" stroke-width="1.6">
+<path d="M 156 190 L 208 190 L 208 426 L 156 426 Z"/>
+<path d="M 200 180 L 252 180 L 252 388 L 200 388 Z"/>
+</g>
+<path d="M 162 424 L 162 448" stroke="#1f2436" stroke-width="3.4" stroke-linecap="round" opacity=".9"/>
+<path d="M 173 424 L 173 448" stroke="#1f2436" stroke-width="3.4" stroke-linecap="round" opacity=".9"/>
+<path d="M 184 424 L 184 448" stroke="#1f2436" stroke-width="3.4" stroke-linecap="round" opacity=".9"/>
+<path d="M 195 424 L 195 448" stroke="#1f2436" stroke-width="3.4" stroke-linecap="round" opacity=".9"/>
+<path d="M 206 424 L 206 448" stroke="#1f2436" stroke-width="3.4" stroke-linecap="round" opacity=".9"/>
+<path d="M 205 386 L 205 410" stroke="#1f2436" stroke-width="3.4" stroke-linecap="round" opacity=".9"/>
+<path d="M 216 386 L 216 410" stroke="#1f2436" stroke-width="3.4" stroke-linecap="round" opacity=".9"/>
+<path d="M 227 386 L 227 410" stroke="#1f2436" stroke-width="3.4" stroke-linecap="round" opacity=".9"/>
+<path d="M 238 386 L 238 410" stroke="#1f2436" stroke-width="3.4" stroke-linecap="round" opacity=".9"/>
+<path d="M 249 386 L 249 410" stroke="#1f2436" stroke-width="3.4" stroke-linecap="round" opacity=".9"/>
+
+<!-- neck wrap -->
+<path d="M 130 142 L 270 142 L 270 198 L 130 198 Z" fill="#1f2436" rx="8"/>
+<path d="M 130 142 L 270 142 L 270 198 L 130 198 Z" fill="url(#sheen)"/>
+<path d="M 130 160 L 270 160" stroke="#7d2a30" stroke-width="13" opacity=".92"/>
+<path d="M 130 184 L 270 184" stroke="#7d2a30" stroke-width="13" opacity=".92"/>
+<path d="M 130 142 L 270 142 L 270 198 L 130 198 Z" fill="none" stroke="#d9b26a" stroke-opacity=".55" stroke-width="2"/>
+<path d="M 200 142 L 200 198" stroke="#000000" stroke-opacity=".3" stroke-width="2.4"/>
+
+</svg>

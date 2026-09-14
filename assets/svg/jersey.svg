@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500" role="img" aria-label="Skyball Jersey">
+<title>Skyball Jersey</title>
+<defs>
+<radialGradient id="halo" cx="50%" cy="45%" r="55%">
+<stop offset="0%" stop-color="#d9b26a" stop-opacity=".28"/>
+<stop offset="55%" stop-color="#d9b26a" stop-opacity=".07"/>
+<stop offset="100%" stop-color="#d9b26a" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#ffffff" stop-opacity=".10"/>
+<stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+</linearGradient>
+
+</defs>
+<ellipse cx="200" cy="240" rx="185" ry="215" fill="url(#halo)"/>
+<circle cx="322.0" cy="220.9" r="3.4" fill="#8fb4e8" opacity="0.73"/>
+<circle cx="184.7" cy="95.5" r="3.4" fill="#f0dcae" opacity="0.73"/>
+<circle cx="338.6" cy="382.7" r="2.5" fill="#f0dcae" opacity="0.53"/>
+<circle cx="71.5" cy="268.7" r="2.7" fill="#f0dcae" opacity="0.59"/>
+<circle cx="249.6" cy="380.9" r="2.2" fill="#8fb4e8" opacity="0.48"/>
+<circle cx="138.3" cy="248.0" r="2.1" fill="#f0dcae" opacity="0.46"/>
+<circle cx="131.5" cy="346.9" r="3.3" fill="#f0dcae" opacity="0.72"/>
+<circle cx="344.3" cy="312.9" r="1.9" fill="#f0dcae" opacity="0.42"/>
+<circle cx="179.6" cy="346.2" r="3.3" fill="#8fb4e8" opacity="0.71"/>
+<circle cx="186.0" cy="251.3" r="1.2" fill="#f0dcae" opacity="0.27"/>
+<circle cx="209.1" cy="377.1" r="3.1" fill="#f0dcae" opacity="0.67"/>
+<circle cx="230.9" cy="414.9" r="3.0" fill="#f0dcae" opacity="0.65"/>
+<circle cx="270.8" cy="416.6" r="2.4" fill="#8fb4e8" opacity="0.53"/>
+<circle cx="164.2" cy="294.7" r="3.1" fill="#f0dcae" opacity="0.66"/>
+
+<path d="M 146 168 L 96 206 L 122 262 L 158 228 Z" fill="#2f3b50"/>
+<path d="M 254 168 L 304 206 L 278 262 L 242 228 Z" fill="#2f3b50"/>
+<path d="M 146 168 L 254 168 L 272 424 L 128 424 Z" fill="#232b3a"/>
+<path d="M 146 168 L 254 168 L 272 424 L 128 424 Z" fill="url(#sheen)"/>
+<path d="M 170 168 C 176 206 224 206 230 168" fill="#2f3b50" opacity=".9"/>
+<g stroke="#d9b26a" stroke-opacity=".7" stroke-width="2" stroke-linecap="round">
+<path d="M 186 180 L 214 180"/>
+<path d="M 188 192 L 212 192"/>
+<path d="M 192 204 L 208 204"/>
+</g>
+<path d="M 146 168 L 254 168 L 272 424 L 128 424 Z" fill="none" stroke="#d9b26a" stroke-opacity=".45" stroke-width="1.8"/>
+<path d="M 146 168 L 96 206 L 122 262 L 158 228 Z" fill="none" stroke="#d9b26a" stroke-opacity=".38" stroke-width="1.6"/>
+<path d="M 254 168 L 304 206 L 278 262 L 242 228 Z" fill="none" stroke="#d9b26a" stroke-opacity=".38" stroke-width="1.6"/>
+<path d="M 132 388 L 268 388" stroke="#d9b26a" stroke-opacity=".3" stroke-width="6"/>
+<text x="200" y="332" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="86" fill="#d9b26a" opacity=".82">09</text>
+
+</svg>

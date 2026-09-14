@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500" role="img" aria-label="Founders' Grimoire">
+<title>Founders' Grimoire</title>
+<defs>
+<radialGradient id="halo" cx="50%" cy="45%" r="55%">
+<stop offset="0%" stop-color="#d9b26a" stop-opacity=".28"/>
+<stop offset="55%" stop-color="#d9b26a" stop-opacity=".07"/>
+<stop offset="100%" stop-color="#d9b26a" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#ffffff" stop-opacity=".10"/>
+<stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+</linearGradient>
+
+</defs>
+<ellipse cx="200" cy="240" rx="185" ry="215" fill="url(#halo)"/>
+<circle cx="347.8" cy="104.1" r="1.6" fill="#8fb4e8" opacity="0.36"/>
+<circle cx="252.3" cy="117.7" r="2.3" fill="#f0dcae" opacity="0.50"/>
+<circle cx="152.1" cy="101.5" r="2.9" fill="#f0dcae" opacity="0.62"/>
+<circle cx="221.6" cy="139.5" r="1.1" fill="#f0dcae" opacity="0.26"/>
+<circle cx="280.8" cy="289.6" r="1.8" fill="#8fb4e8" opacity="0.39"/>
+<circle cx="230.4" cy="204.1" r="2.1" fill="#f0dcae" opacity="0.45"/>
+<circle cx="148.1" cy="173.1" r="2.5" fill="#f0dcae" opacity="0.55"/>
+<circle cx="280.2" cy="65.7" r="3.4" fill="#f0dcae" opacity="0.73"/>
+<circle cx="313.4" cy="68.4" r="3.3" fill="#8fb4e8" opacity="0.70"/>
+<circle cx="285.3" cy="113.6" r="3.5" fill="#f0dcae" opacity="0.74"/>
+<circle cx="292.8" cy="207.1" r="1.7" fill="#f0dcae" opacity="0.37"/>
+<circle cx="103.6" cy="149.5" r="2.8" fill="#f0dcae" opacity="0.60"/>
+<circle cx="320.9" cy="153.2" r="2.5" fill="#8fb4e8" opacity="0.55"/>
+<circle cx="203.4" cy="437.3" r="2.2" fill="#f0dcae" opacity="0.47"/>
+<circle cx="152.9" cy="293.9" r="2.2" fill="#f0dcae" opacity="0.48"/>
+<circle cx="264.7" cy="125.0" r="2.4" fill="#f0dcae" opacity="0.52"/>
+<circle cx="314.4" cy="267.8" r="1.1" fill="#8fb4e8" opacity="0.25"/>
+<circle cx="265.7" cy="231.5" r="2.1" fill="#f0dcae" opacity="0.47"/>
+<circle cx="183.0" cy="365.2" r="2.7" fill="#f0dcae" opacity="0.58"/>
+<circle cx="182.9" cy="172.0" r="3.2" fill="#f0dcae" opacity="0.69"/>
+
+<g transform="rotate(-6 200 300)">
+<!-- page block -->
+<path d="M 130 172 L 262 152 L 300 164 L 300 400 L 262 412 L 130 432 Z" fill="#cabc9c" opacity=".85"/>
+<path d="M 262 176 L 300 164" stroke="#cabc9c" stroke-opacity=".55" stroke-width="5"/>
+<path d="M 262 202 L 300 190" stroke="#cabc9c" stroke-opacity=".55" stroke-width="5"/>
+<path d="M 262 228 L 300 216" stroke="#cabc9c" stroke-opacity=".55" stroke-width="5"/>
+<path d="M 262 254 L 300 242" stroke="#cabc9c" stroke-opacity=".55" stroke-width="5"/>
+<path d="M 262 280 L 300 268" stroke="#cabc9c" stroke-opacity=".55" stroke-width="5"/>
+<path d="M 262 306 L 300 294" stroke="#cabc9c" stroke-opacity=".55" stroke-width="5"/>
+<path d="M 262 332 L 300 320" stroke="#cabc9c" stroke-opacity=".55" stroke-width="5"/>
+<path d="M 262 358 L 300 346" stroke="#cabc9c" stroke-opacity=".55" stroke-width="5"/>
+<path d="M 262 384 L 300 372" stroke="#cabc9c" stroke-opacity=".55" stroke-width="5"/>
+
+<!-- cover -->
+<path d="M 104 160 L 268 136 L 268 388 L 104 412 Z" fill="#40161c"/>
+<path d="M 104 160 L 268 136 L 268 388 L 104 412 Z" fill="url(#sheen)"/>
+<path d="M 104 160 L 268 136 L 268 388 L 104 412 Z" fill="none" stroke="#d9b26a" stroke-opacity=".5" stroke-width="2"/>
+<path d="M 118 178 L 254 158 L 254 370 L 118 390 Z" fill="none" stroke="#d9b26a" stroke-opacity=".32" stroke-width="1.6"/>
+<!-- spine -->
+<path d="M 104 160 L 128 156 L 128 408 L 104 412 Z" fill="#0f0b0d" opacity=".5"/>
+<!-- corner protectors -->
+<g fill="none" stroke="#d9b26a" stroke-opacity=".65" stroke-width="2.4">
+<path d="M 140 172 L 140 152 L 168 148"/>
+<path d="M 234 386 L 254 383 L 254 362"/>
+</g>
+<!-- clasp -->
+<path d="M 254 232 L 296 226 L 296 258 L 254 264 Z" fill="#d9b26a" opacity=".55"/>
+<path d="M 168 254 L 254 242" stroke="#d9b26a" stroke-opacity=".45" stroke-width="9"/>
+<!-- emblem -->
+<g transform="translate(186 268)">
+<circle r="44" fill="none" stroke="#d9b26a" stroke-opacity=".55" stroke-width="2"/>
+<circle r="30" fill="none" stroke="#d9b26a" stroke-opacity=".35" stroke-width="1.4"/>
+<g stroke="#f0dcae" stroke-opacity=".85" stroke-width="3" stroke-linecap="round" fill="none">
+<path d="M 0 -26 L 0 26"/>
+<path d="M 0 -8 L 20 -22"/>
+<path d="M 0 -8 L -20 -22"/>
+<path d="M 0 12 L 17 0"/>
+</g>
+</g>
+<!-- wax seal -->
+<circle cx="288" cy="242" r="24" fill="#7d2430"/>
+<circle cx="288" cy="242" r="24" fill="url(#sheen)"/>
+<circle cx="288" cy="242" r="24" fill="none" stroke="#d9b26a" stroke-opacity=".45" stroke-width="1.5"/>
+</g>
+
+</svg>

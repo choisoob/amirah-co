@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500" role="img" aria-label="First-Year Kit">
+<title>First-Year Kit</title>
+<defs>
+<radialGradient id="halo" cx="50%" cy="45%" r="55%">
+<stop offset="0%" stop-color="#d9b26a" stop-opacity=".28"/>
+<stop offset="55%" stop-color="#d9b26a" stop-opacity=".07"/>
+<stop offset="100%" stop-color="#d9b26a" stop-opacity="0"/>
+</radialGradient>
+<linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#ffffff" stop-opacity=".10"/>
+<stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+</linearGradient>
+
+</defs>
+<ellipse cx="200" cy="240" rx="185" ry="215" fill="url(#halo)"/>
+<circle cx="222.9" cy="261.8" r="1.9" fill="#8fb4e8" opacity="0.42"/>
+<circle cx="43.2" cy="254.3" r="3.4" fill="#f0dcae" opacity="0.73"/>
+<circle cx="203.3" cy="322.1" r="2.8" fill="#f0dcae" opacity="0.60"/>
+<circle cx="238.4" cy="391.5" r="2.6" fill="#f0dcae" opacity="0.56"/>
+<circle cx="137.3" cy="431.6" r="1.7" fill="#8fb4e8" opacity="0.38"/>
+<circle cx="60.8" cy="341.6" r="3.4" fill="#f0dcae" opacity="0.74"/>
+<circle cx="299.4" cy="454.9" r="1.4" fill="#f0dcae" opacity="0.30"/>
+<circle cx="71.2" cy="258.6" r="2.1" fill="#f0dcae" opacity="0.45"/>
+<circle cx="196.0" cy="308.1" r="1.1" fill="#8fb4e8" opacity="0.26"/>
+<circle cx="261.0" cy="326.9" r="2.2" fill="#f0dcae" opacity="0.48"/>
+<circle cx="163.7" cy="434.2" r="2.1" fill="#f0dcae" opacity="0.45"/>
+<circle cx="61.0" cy="424.3" r="1.8" fill="#f0dcae" opacity="0.40"/>
+<circle cx="338.7" cy="300.0" r="2.9" fill="#8fb4e8" opacity="0.63"/>
+<circle cx="111.9" cy="130.3" r="2.6" fill="#f0dcae" opacity="0.57"/>
+<circle cx="95.1" cy="232.7" r="2.6" fill="#f0dcae" opacity="0.56"/>
+<circle cx="183.8" cy="214.4" r="3.2" fill="#f0dcae" opacity="0.69"/>
+<circle cx="252.3" cy="428.4" r="2.1" fill="#8fb4e8" opacity="0.46"/>
+<circle cx="131.0" cy="342.1" r="3.3" fill="#f0dcae" opacity="0.70"/>
+
+<!-- contents peeking out -->
+<path d="M 118 236 L 128 226 L 214 168 L 222 178 Z" fill="#6b5533"/>
+<circle cx="220" cy="170" r="18" fill="#f0dcae" opacity=".16"/>
+<circle cx="220" cy="170" r="5.5" fill="#f0dcae"/>
+<path d="M 246 190 L 290 190 L 290 260 L 246 260 Z" fill="#3d2b33"/>
+<path d="M 246 208 L 290 208" stroke="#d9b26a" stroke-opacity=".5" stroke-width="8"/>
+<path d="M 246 232 L 290 232" stroke="#d9b26a" stroke-opacity=".5" stroke-width="8"/>
+<!-- box -->
+<path d="M 82 256 L 318 256 L 300 438 L 100 438 Z" fill="#241d2a"/>
+<path d="M 82 256 L 318 256 L 300 438 L 100 438 Z" fill="url(#sheen)"/>
+<path d="M 70 222 L 330 222 L 322 266 L 78 266 Z" fill="#241d2a"/>
+<path d="M 70 222 L 330 222 L 322 266 L 78 266 Z" fill="url(#sheen)"/>
+<path d="M 176 266 L 224 266 L 218 438 L 182 438 Z" fill="#7d2a30" opacity=".92"/>
+<path d="M 172 222 L 228 222 L 226 266 L 174 266 Z" fill="#7d2a30" opacity=".92"/>
+<path d="M 86 330 L 310 330" stroke="#7d2a30" stroke-opacity=".8" stroke-width="14"/>
+<g fill="none" stroke="#d9b26a" stroke-opacity=".45" stroke-width="1.8">
+<path d="M 82 256 L 318 256 L 300 438 L 100 438 Z"/>
+<path d="M 70 222 L 330 222 L 322 266 L 78 266 Z"/>
+</g>
+<circle cx="200" cy="330" r="27" fill="#8a6a34"/>
+<circle cx="200" cy="330" r="27" fill="url(#sheen)"/>
+<circle cx="200" cy="330" r="27" fill="none" stroke="#d9b26a" stroke-opacity=".5" stroke-width="1.6"/>
+<g transform="translate(200 330)" opacity=".6">
+<path d="M 0 -13 L 3.4 -4 L 13 -4 L 5 2 L 8 12 L 0 6 L -8 12 L -5 2 L -13 -4 L -3.4 -4 Z" fill="#1a0d0d"/>
+</g>
+
+</svg>
